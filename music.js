@@ -30,6 +30,7 @@ function initInfo() {
     albumCover.src = queueImgs[a];
     title.innerText = queueNames[a];
     audioPlayer.src = a;
+    displayQueue();
     setTimeout(function() {
         albumCover.src = queueImgs[a];
     }, 1000);
@@ -44,6 +45,9 @@ function displayQueue() {
     for (var i = 0; i < queue.length; i++) {
         let newDiv = document.createElement("div");
         newDiv.id = i;
+        if (i == queuePosition) {
+            newDiv.style.backgroundColor = "#4b4b4b"
+        }
         newDiv.onclick = function(e) {
             if (e.target.src == window.location.href + "icons/play-solid.svg") {
                 queuePosition = this.id;
