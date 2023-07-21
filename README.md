@@ -12,3 +12,4 @@
 ## Credits
 #### Code - [Me](https://github.com/anuluxer)
 #### Coverart loader - [JSMediaTags](https://github.com/aadsm/jsmediatags)
+#### Icons - [FontAwesome](https://fontawesome.com/)
