@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="favicon.ico">
+        <title>HTML Music Player</title>
+        <style>
+            input[type="file"] {
+                display: none;
+            }
+            .custom-file-upload {
+                border: 1px solid #ccc;
+                display: inline-block;
+                padding: 6px 12px;
+                cursor: pointer;
+            }
+            .custom-file-upload img {
+                width: 12px;
+                vertical-align: text-bottom;
+            }
+            h1 {
+                text-align: center;
+                font-family: 'Trebuchet MS';
+            }
+            body #albumcover {
+                width: 400px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 2%;
+            }
+            body #musictitle {
+                text-align: center;
+                font-size: 30px;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            body #sliderinfo {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            body #sliderinfo * {
+                margin: 6px;
+            }
+            body #progress {
+                -webkit-appearance: none;
+                width: 50%;
+                height: 25px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+                border-radius: 10px;
+                display: block;
+                margin: 0 auto;
+            }
+            body #progress::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: #000000;
+                border-radius: 100%;
+            }
+            body #controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 50px;
+            }
+            body #controls img {
+                width: 60px;
+                cursor: pointer;
+            }
+            body #controls div {
+                width: max-content;
+                background-color: aqua;
+            }
+            body #controls div:hover #volumeknob {
+                width: 200px;
+                visibility: visible;
+            }
+            #volumeknob {
+                position: absolute;
+                width: 0;
+                visibility: hidden;
+                transition: all 200ms;
+            }
+            body #queue {
+                height: 500px;
+                width: 200px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #797979;
+                overflow-x: hidden;
+                margin-top: 10%;
+                overflow-y: auto;
+            }
+            body #queue div {
+                display: flex;
+                height: 100px;
+                width: 100%;
+                background-color: #6b6b6b;
+                align-items:center;
+                justify-content: space-around;
+            }
+            body #queue div img {
+                pointer-events: all;
+                width: 15px;
+                cursor: pointer;
+            }
+        </style>
+        <script src="jsmediatags.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <label for="file-upload" class="custom-file-upload">
+                <img src="icons/plus-solid.svg"></img>Upload Music
+            </label>
+            <input id="file-upload" type="file" accept="audio/*" oninput="addSongsToQueue(this.files)" multiple/>
+        </header>
+        <h1>Music</h1>
+        <img src="album-placeholder.png" alt="album-placeholder" id="albumcover">
+        <p id="musictitle">TITLE</p>
+        <input type="range" name="progress" id="progress">
+        <br>
+        <div id="controls">
+            <img src="icons/shuffle-solid.svg" onclick="shuffle()"></img>
+            <img src="icons/backward-step-solid.svg" onclick="handleStep(false)"></img>
+            <img src="icons/play-solid.svg" onclick="handlePlayPause()" id="playbutton"></img>
+            <img src="icons/forward-step-solid.svg" onclick="handleStep(true)"></img>
+            <img src="icons/volume-high-solid.svg" onclick="handleVolume()" id="volume"></img>
+        </div>
+        <div id="queue">
+        </div>
+        <audio hidden id="songplayer">
+            <source src="" type="audio/*" id="audsrc">
+        </audio>
+        <script src="music.js"></script>
+    </body>
+</html>
