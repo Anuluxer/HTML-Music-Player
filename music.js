@@ -5,6 +5,7 @@ var queueImgs = {};
 var queuePosition = 0;
 var playing = false;
 var muted = false;
+var dark = false;
 
 var title = document.getElementById("musictitle");
 var playButton = document.getElementById("playbutton");
@@ -14,6 +15,15 @@ var albumCover = document.getElementById("albumcover");
 var queueDiv = document.getElementById("queue");
 
 var jsmediatags = window.jsmediatags;
+
+function handleDarkLight(part) {
+    for (const i of part.children) {
+        i.classList.toggle("darkmode");
+        if (i.children) {
+            handleDarkLight(i);
+        }
+    }
+}
 
 function shufflearray(array) {
     let currentIndex = array.length,  randomIndex;
