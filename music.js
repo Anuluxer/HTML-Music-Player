@@ -36,10 +36,6 @@ function initInfo() {
     }, 1000);
 }
 
-function playIconFunc() {
-    console.log("omfg");
-}
-
 function displayQueue() {
     queueDiv.innerHTML = "";
     for (var i = 0; i < queue.length; i++) {
@@ -49,11 +45,11 @@ function displayQueue() {
             newDiv.style.backgroundColor = "#4b4b4b"
         }
         newDiv.onclick = function(e) {
-            if (e.target.src == window.location.href + "icons/play-solid.svg") {
+            if (e.target.id == "PLAY") {
                 queuePosition = this.id;
                 initInfo();
                 play();
-            } else if (e.target.src == window.location.href + "icons/x-solid.svg") {
+            } else if (e.target.id == "DELETE") {
                 let curr = queue[this.id];
                 delete queueImgs[curr];
                 delete queueNames[curr];
@@ -69,9 +65,10 @@ function displayQueue() {
             }
         }
         var playIcon = document.createElement("img");
-        playIcon.id = i;
+        playIcon.id = "PLAY";
         playIcon.src = "icons/play-solid.svg";
         newDiv.appendChild(playIcon);
+        newDiv.title = queueNames[queue[i]];
         if (queueNames[queue[i]].length > 15) {
             newDiv.innerHTML += queueNames[queue[i]].slice(0, 15) + "...";
         } else {
@@ -79,6 +76,7 @@ function displayQueue() {
         }
         let deleteIcon = document.createElement("img");
         deleteIcon.src = "icons/x-solid.svg";
+        deleteIcon.id = "DELETE";
         newDiv.appendChild(deleteIcon);
         queueDiv.appendChild(newDiv);
     }
