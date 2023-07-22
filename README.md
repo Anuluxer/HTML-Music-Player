@@ -5,9 +5,10 @@
 ## Features
 #### Queue - You can add, remove, and play songs from the queue.
 #### Autoplay - When the current song ends, and if there is another song in the queue, it will be played.
-#### Shuffle - The shuffle button shuffles the queue (AMAZING!!!1!)
+#### Shuffle - The shuffle button shuffles the queue. (AMAZING!!!1!)
 #### Coverart Loader - The music player will load the coverart for the current song if it is in the files metadata.
 #### `file://` Compatibility - This can load in the file:// protocol, great for school chromebooks (because the built in one sucks).
+#### Dark Mode - When your eyes can't take it anymore.
 
 ## Credits
 #### Code - [Me](https://github.com/anuluxer)
