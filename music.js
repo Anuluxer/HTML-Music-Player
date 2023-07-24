@@ -40,8 +40,10 @@ function initInfo() {
     albumCover.src = queueImgs[a];
     title.innerText = queueNames[a];
     audioPlayer.src = a;
+    slider.max = audioPlayer.duration;
     displayQueue();
     setTimeout(function() {
+        slider.max = audioPlayer.duration;
         albumCover.src = queueImgs[a];
     }, 1000);
 }
@@ -53,7 +55,7 @@ function displayQueue() {
         newDiv.id = i;
         if (i == queuePosition) {
             newDiv.style.backgroundColor = "#4b4b4b"
-        }
+        } 
         newDiv.onclick = function(e) {
             if (e.target.id == "PLAY") {
                 queuePosition = this.id;
@@ -187,7 +189,7 @@ function handleStep(step) {
 }
 
 function updateSlider() {
-    slider.value = audioPlayer.currentTime/audioPlayer.duration * 100;
+    slider.value = audioPlayer.currentTime;
 }
 
 setInterval(function() {
@@ -200,7 +202,7 @@ slider.addEventListener('mousedown', function() {
     pause();
 });
 slider.addEventListener('mouseup', function() {
-    audioPlayer.currentTime = slider.value/100 * audioPlayer.duration;
+    audioPlayer.currentTime = slider.value;
     play();
 });
 document.addEventListener("keypress", function(e) {
