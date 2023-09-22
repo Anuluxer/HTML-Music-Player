@@ -41,6 +41,7 @@ function initInfo() {
     title.innerText = queueNames[a];
     audioPlayer.src = a;
     slider.max = audioPlayer.duration;
+    document.title = queueNames[a];
     displayQueue();
     setTimeout(function() {
         slider.max = audioPlayer.duration;
